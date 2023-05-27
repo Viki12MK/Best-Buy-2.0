@@ -1,5 +1,5 @@
 import pytest
-from products import Product
+from products import Product, NonStockedProduct, LimitedProduct
 
 
 def test_create_product():
@@ -50,3 +50,29 @@ def test_product_deactivated():
     product.deactivate()
     assert product.is_active() is False
 
+
+def test_create_non_stocked_product():
+    product = NonStockedProduct("Windows License", 125)
+    assert product.name == "Windows License"
+    assert product.price == 125
+    assert product.quantity == 0
+    assert product.active is True
+
+
+def test_show_non_stocked_products():
+    product = NonStockedProduct("Windows License", 125)
+    assert product.show() == "Product: Windows License, Price: 125, Non-Stocked"
+
+
+def test_create_limited_product():
+    product = LimitedProduct("Shipping", 10, 1, 250)
+    assert product.name == "Shipping"
+    assert product.price == 10
+    assert product.quantity == 250
+    assert product.maximum == 1
+    assert product.active is True
+
+
+def test_show_limited_products():
+    product = LimitedProduct("Shipping", 10, 1, 250)
+    assert(product.show() == "Product: Shipping, Price: 10, Quantity: 250, Maximum: 1")
