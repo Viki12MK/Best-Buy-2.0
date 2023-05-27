@@ -1,3 +1,6 @@
+from promotion import Promotion, PercentageDiscountPromotion, SecondItemHalfPricePromotion, Buy2Get1FreePromotion
+
+
 class Product:
     def __init__(self, name, price, quantity):
         # Initialize instance variables
@@ -5,6 +8,7 @@ class Product:
         self.price = price
         self.quantity = quantity
         self.active = True
+        self.promotion = None
 
         # Validate input values
         if self.name == "":
@@ -36,8 +40,16 @@ class Product:
         else:
             raise Exception("Product deactivation is not allowed.")
 
+    def set_promotion(self, promotion):
+        self.promotion = promotion
+
+    def get_promotion(self):
+        return self.promotion
+
     def show(self):
-        return f"Product: {self.name}, Price: {self.price}, Quantity: {self.quantity}"
+        promotion_name = self.promotion.__class__.__name__ if self.promotion else "None"
+        return f"Product: {self.name}, Price: {self.price}, Quantity: {self.quantity}, Promotion: {promotion_name}"
+        # return f"Product: {self.name}, Price: {self.price}, Quantity: {self.quantity}"
 
     def buy(self, quantity):
         if not self.is_active():
