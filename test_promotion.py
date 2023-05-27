@@ -1,6 +1,6 @@
 import unittest
-from products import Product, NonStockedProduct, LimitedProduct
-from promotion import(PercentageDiscountPromotion, SecondItemHalfPricePromotion, Buy2Get1FreePromotion)
+from products import Product
+from promotion import PercentageDiscountPromotion, SecondItemHalfPricePromotion, Buy2Get1FreePromotion
 
 
 class PromotionTest(unittest.TestCase):

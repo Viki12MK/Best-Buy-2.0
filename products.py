@@ -1,5 +1,3 @@
-from promotion import Promotion, PercentageDiscountPromotion, SecondItemHalfPricePromotion, Buy2Get1FreePromotion
-
 
 class Product:
     def __init__(self, name, price, quantity):
