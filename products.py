@@ -56,3 +56,20 @@ class Product:
             self.deactivate()
 
         return total_price
+
+
+class NonStockedProduct(Product):
+    def __init__(self, name, price, quantity=0):
+        super().__init__(name, price, quantity)
+
+    def show(self):
+        return f"Product: {self.name}, Price: {self.price}, Non-Stocked"
+
+
+class LimitedProduct(Product):
+    def __init__(self, name, price, maximum, quantity=0):
+        super().__init__(name, price, quantity)
+        self.maximum = maximum
+
+    def show(self):
+        return f"Product: {self.name}, Price: {self.price}, Quantity: {self.quantity}, Maximum: {self.maximum}"

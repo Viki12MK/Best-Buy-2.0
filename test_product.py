@@ -49,3 +49,4 @@ def test_product_deactivated():
     product = Product("Phone", 1000, 10)
     product.deactivate()
     assert product.is_active() is False
+
